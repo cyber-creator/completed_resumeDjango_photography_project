@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>{% block title %}Photography Portfolio{% endblock title %}</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}"> <!--Icomoon-->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+	</head>
+
+	<body>
+        {% block overlay %}
+        {% endblock overlay %}
+		<header>
+			<div class="header__common wrapper">
+				<h1>John Doe</h1>
+				<div id="burger__menu_box">
+					<div id="burger__menu">
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45" height="26" viewBox="0 0 45 26">
+							<image id="Handburger_Menu" data-name="Handburger Menu" width="45" height="26" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAaCAYAAAAjZdWPAAAAoklEQVRYhe2YsQkCQRBF3x3Ggi0YGlqATViJgqZibGJjBhZwd2ABBncFrEyw+ZoM82FeBY/hM5+ZrpRyBJ7AmvjMwMmkv8BGQLiy9MAUw6WZ0Sa9A24i8ViAu0kHcPmPXkm2ktJepLQXktIr4AA8hGr8Ynt6ALYBhFr5SMbDJq0Wj2vWuBcp7UVKeyFb40rn1lzPrRewDyDUylvyhaD3rIHzD8krNN6Q1BnRAAAAAElFTkSuQmCC"/>
+						</svg>
+					</div>
+					<div id="menu" class="menu__default">
+						<i id="close__menu" class="icon-close close__menu_icon"></i>
+						<ul>
+							<li><a href="{% url 'index' %}">Home</a></li>
+							<li><a href="{% url 'about' %}">About</a></li>
+							<li><a href="{% url 'portfolio' %}">Portfolio</a></li>
+							<li><a href="{% url 'categories' %}">Categories</a></li>
+							<li><a href="{% url 'contacts' %}">Contact</a></li>
+						</ul>
+				    </div>
+				</div>
+			</div>
+		</header>
+
+        <!-- block content -->
+
+        {% block content %}
+
+        {% endblock content %}
+
+        <!-- end block content -->
+        {% block javascript %}
+		    <script src="{% static 'js/humburger.js' %}"></script>
+		{% endblock javascript %}
+
+	</body>
+</html>

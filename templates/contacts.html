@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contacts{% endblock title %}
+{% block content %}
+<main>
+    <section class="page__description wrapper">
+        <div class="page__description-inner">
+            <h2>Contact Us</h2>
+            <ul class="breadcrumbs">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <p class="page__description_text">
+                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+            </p>
+        </div>
+    </section>
+    <div class="form wrapper">
+        <div class="form__container">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form__name-phone">
+                    <div class="input__box input__name-box"><input class="input__name" name="name" type="text" placeholder="Name"/><span class="errorMessage disable"></span></div>
+                    <div class="input__box input__phone-box"><input class="input__phone" name="phone" type="text" placeholder="Phone"/><span class="errorMessage disable"></span></div>
+                </div>
+                <div class="input__box"><input class="input__email-box" name="email" type="text" placeholder="Email"/><span class="errorMessage disable"></span></div>
+                <textarea class="textarea__box" placeholder="Write Your Message" name="text"></textarea>
+                <div class="btn__form_box"><button class="btn btn__form" type="submit">Submit Message</button></div>
+            </form>
+        </div>
+    </div>
+    <div class="map__container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30596698663!2d-74.25986773739224!3d40.697149413874705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1582267496824!5m2!1sen!2sus" style="border:0;" allowfullscreen=""></iframe>
+    </div>
+</main>
+<div class="contact__overlay">
+    <div class="popup__form">
+        <div class="popup__form_text">success</div>
+        <i class="icon-close popup__form_close"></i>
+    </div>
+</div>
+{% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'js/humburger.js' %}"></script>
+    <script src="{% static 'js/form.js' %}"></script>
+{% endblock javascript %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Categories{% endblock title %}
+{% block content %}
+<main>
+			<section class="page__description wrapper">
+				<h2>Categories</h2>
+				<ul class="breadcrumbs">
+					<li><a href="{% url 'index' %}">Home</a></li>
+					<li><a href="{% url 'categories' %}">Categories</a></li>
+				</ul>
+				<p class="page__description_text">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa assumenda adipisci perferendis sunt ad natus dignissimos eligendi, blanditiis non rerum debitis. Sed quas impedit in magni maiores itaque, inventore praesentium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa assumenda adipisci perferendis sunt ad natus dignissimos eligendi, blanditiis non rerum debitis. Sed quas impedit in magni maiores itaque, inventore praesentium.
+				</p>
+			</section>
+			<div class="services__images wrapper">
+				<div class="services__images_inner">
+                    {% for category in category_to_display %}
+					    <a href="{{ category.get_absolute_url }}" class="services__images_item">
+						<figure>
+							<img src="{{ category.photo_set.first.photo.url }}" alt="">
+							<figcaption>
+								<span>{{ category.name }}</span>
+							</figcaption>
+						</figure>
+					</a>
+                    {% endfor %}
+				</div>
+			</div>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo;</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">&lsaquo;</a>
+                    {% endif %}
+
+                    <span class="current">
+                        {{ page_obj.number }}
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">&rsaquo;</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+		</main>
+{% endblock content %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    {% if category_name %}
+        {{ category_name.name }}
+    {% else %}
+        Overview
+    {% endif %}
+{% endblock title %}
+{% block overlay %}
+    <div class="gallery__overlay">
+    </div>
+    <div class="gallery__popup">
+        <img src="#" id="img__active" alt="">
+        <i id="close__img" class="icon-close"></i>
+        <i id="left__img" class="icon-chevron-left"></i>
+        <i id="right__img" class="icon-chevron-right"></i>
+    </div>
+{% endblock overlay %}
+
+{% block content %}
+    <main>
+        <section class="page__description wrapper">
+            {% if category_name %}
+                <h2>{{ category_name.name }}</h2>
+            {% else %}
+                <h2>Portfolio</h2>
+            {% endif %}
+            <ul class="breadcrumbs">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                {% if category_name %}
+                    <li><a href="{{ category_name.get_absolute_url }}">{{ category_name.name }}</a></li>
+                {% else %}
+                    <li><a href="{% url 'portfolio' %}">Works Overview</a></li>
+                {% endif %}
+            </ul>
+        </section>
+        <div class="portfolio__container wrapper">
+            <div class="portfolio__gallery">
+                {% for image in photos_to_display %}
+                    <img src="{{ image.photo.url }}" class="gallery__item gallery__item_1" alt="{{ image.title }}">
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo;</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">&lsaquo;</a>
+                {% endif %}
+
+                <span class="current">
+                    {{ page_obj.number }}
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">&rsaquo;</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </main>
+{% endblock content %}
+{% block javascript %}
+    <script src="{% static 'js/humburger.js' %}"></script>
+    <script src="{% static 'js/popup.js' %}"></script>
+{% endblock javascript %}

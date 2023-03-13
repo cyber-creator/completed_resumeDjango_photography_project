@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Photography Portfolio</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}"/>
+		<link rel="stylesheet" href="{% static 'css/fonts.css' %}"> <!--Icomoon-->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+	</head>
+
+	<body>
+		<div class="succes__form_container">
+			<div class="succes__form_inner">
+				<div class="succes__form_title">success</div>
+				<div class="succes__form_subtitle">Thank you for massage!</div>
+				<a href="{% url 'contacts' %}" class="return__btn">Return</a>
+			</div>
+		</div>
+	</body>	
+</html>
